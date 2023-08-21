@@ -44,24 +44,13 @@ export default {
             "tailwindcss/nesting",
             ["tailwindcss", {config: {
               darkMode: "class",
-              // content: ["./src/*.{js,jsx,html}", "./node_modules/flowbite/**/*.{js,jsx,ts,tsx}"],
               content: ["./src/**/*.{js,jsx,html}"],
               theme: {
-                // extend: {
-                //   colors: ({theme}) => ({
-                //     trueGray: theme("colors.neutral"),
-                //   }),
-                // },
-                // fontFamily: ({theme}) => ({
-                //   sans: ["Inter", ...theme("fontFamily.sans")],
-                //   stock: [theme("fontFamily.sans")],
-                // }),
               },
               plugins: [
-                "@tailwindcss/aspect-ratio"
-                // "@tailwindcss/forms",
-                // "@tailwindcss/typography",
-                // "flowbite/plugin"
+                "@tailwindcss/aspect-ratio",
+                "@tailwindcss/forms",
+                "@tailwindcss/typography",
               ]
             }}],
             "postcss-preset-env",
