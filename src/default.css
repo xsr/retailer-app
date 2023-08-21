@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h3 {
+  @apply text-3xl
+}
+h1 {
+  @apply text-6xl
+}
+main {
+  @apply
+    container
+    max-w-sm mx-auto px-4
+    sm:px-0
+    text-slate-800
+    dark:text-slate-200
+}
+
+main.debug {
+  white-space: pre;
+}
+
+main > article {
+  @apply
+    w-full mt-4
+    sm:border sm:border-slate-600/50 sm:rounded-lg sm:shadow-xl sm:p-4
+    /* dark:bg-slate-800 dark:border-slate-700 */
+}
+.form {
+  @apply space-y-4
+}
+.form label {
+  @apply block text-sm font-normal
+    text-slate-900 dark:text-slate-400
+}
+.form label:first-child {
+  @apply mb-2
+}
+.form label:last-child {
+  @apply mt-2
+}
+/* form > section.checkbox {
+  @apply flex  items-center h-5
+}
+form > section.checkbox > label {
+  @apply ml-2 text-sm font-medium text-slate-900 dark:text-slate-300
+} */
+.form input {
+  @apply
+    block w-full p-2 text-base rounded-lg
+    bg-slate-50 border border-slate-300 text-slate-900
+    focus:ring-blue-500 focus:border-blue-500
+    dark:bg-slate-600 dark:border-slate-500 dark:placeholder-slate-400 dark:text-slate-200
+}
+/* form.new-space > section > input[type=text] {
+  @apply p-4 text-lg
+} */
+/* .form input[type=checkbox] {
+  @apply w-4 h-4 border border-slate-300 rounded bg-slate-50 focus:ring-2 focus:ring-blue-300 dark:bg-slate-700 dark:border-slate-600 dark:focus:ring-blue-600 dark:ring-offset-slate-800 dark:focus:ring-offset-slate-800
+} */
+.form button[type=submit] {
+  @apply
+    uppercase w-full font-medium rounded-full text-base p-2 text-center
+      text-slate-200 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
+    dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
+    /* text-lg p-4 */
+}
+
+.theme-toggle {
+  /* @apply mt-4 text-right */
+}
+.theme-toggle button {
+  @apply text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2
+}
+.theme-toggle > button > svg {
+  @apply w-5 h-5 fill-current
+}
+
+.debug {
+  /* @apply outline-dashed outline-4 outline-slate-400; */
+  .string {
+    @apply text-green-500
+  }
+  .number {
+    @apply text-orange-500
+  }
+  .boolean {
+    @apply text-blue-500
+  }
+  .null {
+    @apply text-pink-500
+  }
+  .key {
+    @apply text-red-500
+  }
+}
+
+@layer base {
+  html,
+  body {
+    @apply dark:bg-gray-900;
+  }
+}
