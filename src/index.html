@@ -7,9 +7,8 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
   <link rel="icon" href="/favicon.png" />
   <script>
-    // if (! ("theme" in localStorage)) localStorage.theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" ; document.querySelector("html").classList.add(localStorage.theme)
-    // if (! ["dark", "light"].includes(localStorage.theme)) localStorage.theme = "dark"
-    // document.querySelector("html").setAttribute("class", localStorage.theme)
+    if (! ["dark", "light"].includes(localStorage.theme)) localStorage.theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+    document.querySelector("html").setAttribute("class", localStorage.theme)
   </script>
 </head>
 <body>
