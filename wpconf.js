@@ -1,13 +1,23 @@
+import webpack from "webpack"
 import HtmlPlugin from "html-webpack-plugin"
 import CopyPlugin from "copy-webpack-plugin"
+import colors from "tailwindcss/colors.js"
 
 export default {
+  mode: "development",
+  devServer: {
+    hot: true,
+    proxy: {
+      // "/gun": "http://127.0.0.1:8765"
+    }
+  },
+  devtool: "inline-source-map",
   entry: "./src/app.jsx",
   output: {     
     filename: "app.js",
     publicPath: "/"
   },
-  plugins: [,
+  plugins: [
     new HtmlPlugin({
       template: "./src/index.html",
     }),
@@ -17,9 +27,6 @@ export default {
       ]
     }),
   ],
-  devServer: {
-    hot: false
-  },
   module: {
     rules: [
       {
@@ -41,19 +48,27 @@ export default {
           "style-loader",
           "css-loader",
           {loader: "postcss-loader", options: {postcssOptions: {config: false, plugins: [
+            "postcss-import",
             "tailwindcss/nesting",
             ["tailwindcss", {config: {
               darkMode: "class",
-              content: ["./src/**/*.{js,jsx,html}"],
+              content: ["./src/**/*.{js,jsx,html}",  "./node_modules/flowbite/**/*.js"],
               theme: {
+                extend: {
+                  colors: {
+                    primary: colors.violet
+                  }
+                }
               },
               plugins: [
                 "@tailwindcss/aspect-ratio",
-                "@tailwindcss/forms",
-                "@tailwindcss/typography",
+                "flowbite/plugin"
+                // "@tailwindcss/forms",
+                // "@tailwindcss/typography",
               ]
             }}],
             "postcss-preset-env",
+            "postcss-simple-vars",
             "autoprefixer"
           ]}}}, 
         ],
@@ -66,18 +81,7 @@ export default {
   },
   resolve: {
     extensions: [".js", ".jsx"],
-    // fallback: { "crypto": false },
-  //   alias: {
-  //     stream: path.resolve("./node_modules/stream-browserify"),
-  //     zlib: path.resolve("./node_modules/browserify-zlib"),
-  //     assert: path.resolve("./node_modules/assert"),
-  // },
-  }//,
-  // performance: {
-  //   hints: false,
-  //   maxEntrypointSize: 512000,
-  //   maxAssetSize: 512000
-  // }
+  }
 }
 
 

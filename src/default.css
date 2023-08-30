@@ -1,108 +1,148 @@
+$max-width: theme("screens.lg");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-  .color-mode {
-  @apply text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5
+.container {
+  @apply mx-auto;
+  max-width: $max-width;
 }
 
-h3 {
-  @apply text-3xl
-}
-h1 {
-  @apply text-6xl
-}
+@layer components {
+
 main {
   @apply
-    container
-    max-w-sm mx-auto px-4
+    mx-auto px-4
     sm:px-0
-    text-slate-800
-    dark:text-slate-200
+    /* text-slate-800 */
+    /* dark:text-slate-200 */
+    /* border-dashed border-4 border-red-500 */
+    text-purple-600
+  ;
+  max-width: $max-width;
 }
 
-main.debug {
-  white-space: pre;
-}
-
-main > article {
+.theme-switch {
   @apply
-    w-full mt-4
-    sm:border sm:border-slate-600/50 sm:rounded-lg sm:shadow-xl sm:p-4
-    /* dark:bg-slate-800 dark:border-slate-700 */
+    rounded-lg text-sm p-2
+    text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200
+    dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700
+  ;
+  svg {
+    @apply w-5 h-5 fill-current
+  }
 }
-.form {
-  @apply space-y-4
-}
-.form label {
-  @apply block text-sm font-normal
-    text-slate-900 dark:text-slate-400
-}
-.form label:first-child {
-  @apply mb-2
-}
-.form label:last-child {
-  @apply mt-2
-}
-/* form > section.checkbox {
-  @apply flex  items-center h-5
-}
-form > section.checkbox > label {
-  @apply ml-2 text-sm font-medium text-slate-900 dark:text-slate-300
-} */
-.form input {
+nav {
   @apply
-    block w-full p-2 text-base rounded-lg
-    bg-slate-50 border border-slate-300 text-slate-900
-    focus:ring-blue-500 focus:border-blue-500
-    dark:bg-slate-600 dark:border-slate-500 dark:placeholder-slate-400 dark:text-slate-200
+    flex flex-wrap items-center justify-between mx-auto p-4
+  ; 
+  min-width: 300px;
+  max-width: $max-width;
+  .cta {
+    @apply
+      font-medium rounded-lg text-sm px-4 py-2 text-center
+      text-slate-100 bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300
+    ;
+  }
+  ul {
+    @apply hidden md:flex 
+      md:p-0 md:mt-0 md:border-0
+      rounded-lg   font-medium
+    ;
+    li a {
+      @apply block py-2 pl-3 pr-4 rounded
+       text-gray-900 hover:bg-gray-100 
+       dark:text-white dark:hover:bg-gray-700 dark:border-gray-700
+    }
+  }
+  button {
+    svg {
+      @apply w-5 h-5 fill-none;
+    }
+  }
 }
-/* form.new-space > section > input[type=text] {
-  @apply p-4 text-lg
-} */
-/* .form input[type=checkbox] {
-  @apply w-4 h-4 border border-slate-300 rounded bg-slate-50 focus:ring-2 focus:ring-blue-300 dark:bg-slate-700 dark:border-slate-600 dark:focus:ring-blue-600 dark:ring-offset-slate-800 dark:focus:ring-offset-slate-800
-} */
-.form button[type=submit] {
-  @apply
-    uppercase w-full font-medium rounded-full text-base p-2 text-center
-      text-slate-200 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300
-    dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
-    /* text-lg p-4 */
+svg {
+  path {
+    @apply stroke-current stroke-2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
 }
-
-.theme-toggle {
-  /* @apply mt-4 text-right */
+.fall {
+  --xyz-stagger: 0.2s;
+  --xyz-translate-y: -350%;
+  --xyz-scale-x: 0;
+  --xyz-ease: cubic-bezier(0.5, -1.5, 0.5, 1.5);
 }
-.theme-toggle button {
-  @apply text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2
+.hero {
+  @apply py-4 mx-auto max-w-screen-xl text-center
+  ;
+  h1 {
+    @apply mb-4 text-6xl font-extrabold tracking-[-0.1em] leading-none;
+    span {
+      @apply inline-block px-2 mr-8 bg-clip-text text-transparent bg-gradient-to-l
+      ;
+      em {
+        @apply bg-clip-content text-white;
+        font-style: normal;
+      }
+    }
+  }
+  .buttons {
+    @apply flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4;
+  }
 }
-.theme-toggle > button > svg {
-  @apply w-5 h-5 fill-current
+.hero-img {
+  & > div {
+    @apply
+      mx-auto
+    ;
+    max-width: $max-width;
+  }
+  .bite {
+    @apply
+      text-2xl leading-none text-violet-100 text-center
+    ;
+    em {
+      font-style: normal;
+      @apply text-violet-600
+    }
+  }
 }
-
 .debug {
-  /* @apply outline-dashed outline-4 outline-slate-400; */
-  .string {
-    @apply text-green-500
+    /* @apply outline-dashed outline-4 outline-slate-400; */
+    .string {
+      @apply text-green-500
+    }
+    .number {
+      @apply text-orange-500
+    }
+    .boolean {
+      @apply text-blue-500
+    }
+    .null {
+      @apply text-pink-500
+    }
+    .key {
+      @apply text-red-500
+    }
   }
-  .number {
-    @apply text-orange-500
-  }
-  .boolean {
-    @apply text-blue-500
-  }
-  .null {
-    @apply text-pink-500
-  }
-  .key {
-    @apply text-red-500
-  }
+
 }
 
 @layer base {
-  html,
+  html {
+    @apply min-h-screen;
+  }
   body {
-    @apply dark:bg-gray-900;
+    @apply min-h-full text-slate-800 bg-slate-100;
+    /* background-image: linear-gradient(62deg, #8EC5FCaa 0%, #ffffff00 77%); */
+    background-image: linear-gradient(62deg, #8EC5FCaa 0%, #ffffff00 77%);
+  }
+  .dark body {
+    @apply text-slate-200 bg-slate-800;
+    /* background-image: linear-gradient(62deg, rgb(17, 24, 39) 0%, #000000FF 77%); */
+    background-image: linear-gradient(62deg, theme(colors.slate.800) 0%, theme(colors.slate.950) 77%);
   }
 }
